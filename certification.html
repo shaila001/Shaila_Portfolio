@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaila Rahaman - Certifications</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f9a826;
+            --secondary-color: #6c63ff;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #ffffff;
+            --text-gray: #94a3b8;
+            --text-dark: #1a1a1a;
+            --border-radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #131c31 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--light-text) !important;
+            position: relative;
+        }
+        
+        .navbar-brand::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+        }
+
+        .nav-link {
+            color: var(--light-text) !important;
+            margin: 0 12px;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s;
+            padding: 8px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .active-link {
+            color: var(--primary-color) !important;
+            background-color: rgba(249, 168, 38, 0.1);
+            position: relative;
+        }
+        
+        .active-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+        }
+        
+        .container {
+            padding: 2rem 1rem;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: -2rem auto 3rem;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+        
+        .cert-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            margin-bottom: 30px;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(105deg, transparent 40%, rgba(249, 168, 38, 0.1));
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .cert-card:hover::before {
+            opacity: 1;
+        }
+        
+        .cert-img {
+            position: relative;
+            overflow: hidden;
+            height: 180px;
+            background: linear-gradient(120deg, #2a3f6a, #131c31);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cert-img i {
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.2);
+            transform: rotate(-15deg);
+            transition: var(--transition);
+        }
+        
+        .cert-card:hover .cert-img i {
+            transform: rotate(0) scale(1.1);
+            color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .cert-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to top, var(--card-bg), transparent);
+        }
+        
+        .cert-body {
+            padding: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cert-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .cert-card:hover .cert-title {
+            color: var(--primary-color);
+        }
+        
+        .cert-issuer {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .cert-issuer i {
+            margin-right: 8px;
+        }
+        
+        .cert-date {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .cert-date i {
+            margin-right: 8px;
+            color: var(--primary-color);
+            opacity: 0.7;
+        }
+        
+        .cert-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .btn-verify {
+            background: linear-gradient(45deg, var(--primary-color), #e09321);
+            color: var(--text-dark);
+            border: none;
+            border-radius: 30px;
+            padding: 0.7rem 1.8rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(249, 168, 38, 0.2);
+        }
+        
+        .btn-verify:hover {
+            background: linear-gradient(45deg, #e09321, var(--primary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(249, 168, 38, 0.4);
+        }
+        
+        .cert-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--secondary-color), #8b83ff);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .cert-badge.software { background: linear-gradient(45deg, #4facfe, #00f2fe); }
+        .cert-badge.award { background: linear-gradient(45deg, #f83600, #fe8c00); }
+        .cert-badge.volunteer { background: linear-gradient(45deg, #11998e, #38ef7d); }
+        .cert-badge.web { background: linear-gradient(45deg, #667eea, #764ba2); }
+        .cert-badge.data { background: linear-gradient(45deg, #ff9a9e, #fad0c4); color: #333; }
+        
+        /* Categories */
+        .cert-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 30px;
+            padding: 0.6rem 1.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(249, 168, 38, 0.3);
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.7s ease forwards;
+            opacity: 0;
+        }
+        
+        .animate-slide {
+            animation: slideIn 0.7s ease forwards;
+            opacity: 0;
+        }
+        
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+        .animate-delay-4 { animation-delay: 0.4s; }
+        .animate-delay-5 { animation-delay: 0.5s; }
+        .animate-delay-6 { animation-delay: 0.6s; }
+        
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            height: 4px;
+            position: fixed;
+            top: 0;
+            z-index: 1001;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), #e09321);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background-color: rgba(15, 23, 42, 0.95);
+                padding: 20px;
+                border-radius: 15px;
+                margin-top: 15px;
+            }
+            
+            .navbar-nav {
+                gap: 10px;
+            }
+            
+            .cert-card {
+                margin-bottom: 25px;
+            }
+            
+            .cert-categories {
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+            
+            .category-btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1.2rem;
+            }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.9);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), #e09321);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(#e09321, var(--primary-color));
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+          <a class="navbar-brand" href="index.html">Shaila Rahaman</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="about.html">About Me</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="academic.html">Academic Info</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" href="skills.html">Skills</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="achievement.html">Achievement</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="certification.html">Certification</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="projects.html">Projects</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="contact.html">Contact</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+
+    <!-- Certification Section -->
+    <section class="container">
+        <h2 class="section-title animate-fade">My Certifications</h2>
+        <p class="section-subtitle animate-fade animate-delay-1">These credentials showcase my commitment to continuous learning and professional development across various domains.</p>
+        
+        <div class="row" id="certGrid">
+            <!-- Software Project Certificate -->
+            <div class="col-md-6 col-lg-4 animate-fade animate-delay-1 cert-item software">
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <i class="fas fa-laptop-code"></i>
+                        <span class="cert-badge software"><i class="fas fa-code"></i> Software Project</span>
+                    </div>
+                    <div class="cert-body">
+                        <h5 class="cert-title">Software Project Showcase</h5>
+                        <p class="cert-issuer"><i class="fas fa-award"></i> Technology Festival 2024</p>
+                        <p class="cert-date"><i class="far fa-calendar-alt"></i> Issued: June 27, 2024</p>
+                        <p class="cert-desc">Certificate of participation in the SRS Poster Presentation at the Technology Festival 2024 organized by NSTU.</p>
+                        <a href="#" class="btn btn-verify"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cultural Program Certificate -->
+            <div class="col-md-6 col-lg-4 animate-fade animate-delay-2 cert-item achievement">
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <i class="fas fa-trophy"></i>
+                        <span class="cert-badge award"><i class="fas fa-medal"></i> 1st Place</span>
+                    </div>
+                    <div class="cert-body">
+                        <h5 class="cert-title">Annual Sports and Cultural Function</h5>
+                        <p class="cert-issuer"><i class="fas fa-university"></i> Hazrat Bibi Khadiza Hall, NSTU</p>
+                        <p class="cert-date"><i class="far fa-calendar-alt"></i> Issued: 2024</p>
+                        <p class="cert-desc">First place achievement certificate in the Annual Sports and Cultural Function organized by Hazrat Bibi Khadiza Hall.</p>
+                        <a href="#" class="btn btn-verify"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Volunteer Service Certificate -->
+            <div class="col-md-6 col-lg-4 animate-fade animate-delay-3 cert-item volunteer">
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <i class="fas fa-hands-helping"></i>
+                        <span class="cert-badge volunteer"><i class="fas fa-heart"></i> Volunteering</span>
+                    </div>
+                    <div class="cert-body">
+                        <h5 class="cert-title">Certificate of Appreciation</h5>
+                        <p class="cert-issuer"><i class="fas fa-university"></i> Hazrat Bibi Khadiza Hall, NSTU</p>
+                        <p class="cert-date"><i class="far fa-calendar-alt"></i> Issued: December 2024</p>
+                        <p class="cert-desc">Recognition for exceptional contribution and dedicated volunteer service in organizing and supporting the sports and Cultural Program.</p>
+                        <a href="#" class="btn btn-verify"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Development Certificate -->
+            <div class="col-md-6 col-lg-4 animate-fade animate-delay-4 cert-item technical">
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <i class="fas fa-globe"></i>
+                        <span class="cert-badge web"><i class="fas fa-code"></i> Web Development</span>
+                    </div>
+                    <div class="cert-body">
+                        <h5 class="cert-title">Complete Web Development Course</h5>
+                        <p class="cert-issuer"><i class="fas fa-graduation-cap"></i> Programming Hero</p>
+                        <p class="cert-date"><i class="far fa-calendar-alt"></i> Issued: January 2024</p>
+                        <p class="cert-desc">Comprehensive course covering HTML, CSS, JavaScript, and modern frameworks like React and Node.js.</p>
+                        <a href="#" class="btn btn-verify"><i class="fas fa-certificate"></i> Verify Certificate</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Analysis Certificate -->
+            <div class="col-md-6 col-lg-4 animate-fade animate-delay-5 cert-item technical">
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <i class="fas fa-chart-bar"></i>
+                        <span class="cert-badge data"><i class="fas fa-database"></i> Data Analysis</span>
+                    </div>
+                    <div class="cert-body">
+                        <h5 class="cert-title">Data Analysis with Python</h5>
+                        <p class="cert-issuer"><i class="fas fa-graduation-cap"></i> freeCodeCamp</p>
+                        <p class="cert-date"><i class="far fa-calendar-alt"></i> Issued: May 2023</p>
+                        <p class="cert-desc">Analyzing and visualizing data using Python libraries including Pandas, NumPy, and Matplotlib.</p>
+                        <a href="#" class="btn btn-verify"><i class="fas fa-certificate"></i> Verify Certificate</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Certificate - Machine Learning -->
+            <div class="col-md-6 col-lg-4 animate-fade animate-delay-6 cert-item technical">
+                <div class="cert-card">
+                    <div class="cert-img">
+                        <i class="fas fa-brain"></i>
+                        <span class="cert-badge web"><i class="fas fa-robot"></i> Machine Learning</span>
+                    </div>
+                    <div class="cert-body">
+                        <h5 class="cert-title">Introduction to Machine Learning</h5>
+                        <p class="cert-issuer"><i class="fas fa-graduation-cap"></i> Coursera</p>
+                        <p class="cert-date"><i class="far fa-calendar-alt"></i> Issued: September 2023</p>
+                        <p class="cert-desc">Fundamentals of machine learning algorithms, techniques, and practical applications with Python.</p>
+                        <a href="#" class="btn btn-verify"><i class="fas fa-certificate"></i> Verify Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom script for animations and functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Highlight active nav link
+            const currentLocation = location.href;
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.href === currentLocation) {
+                    link.classList.add('active-link');
+                }
+            });
+            
+            // Animate elements when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.animate-fade, .animate-slide').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Progress bar
+            window.onscroll = function() {
+                progressBarUpdate();
+                backToTopUpdate();
+            };
+            
+            function progressBarUpdate() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById("progressBar").style.width = scrolled + "%";
+            }
+            
+            // Back to Top button visibility
+            function backToTopUpdate() {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    document.getElementById("backToTop").classList.add("show");
+                } else {
+                    document.getElementById("backToTop").classList.remove("show");
+                }
+            }
+            
+            // Back to Top button functionality
+            document.getElementById("backToTop").addEventListener("click", function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+            
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const certItems = document.querySelectorAll('.cert-item');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    // Filter cert items
+                    certItems.forEach(item => {
+                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                            item.style.display = 'block';
+                            
+                            // Add animation when items reappear
+                            setTimeout(() => {
+                                item.style.opacity = 1;
+                                item.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = 0;
+                            item.style.transform = 'translateY(20px)';
+                            
+                            // Hide after animation completes
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
